@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pranav | Embedded & Electronics Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Portfolio of Pranav – Embedded systems, IoT, LoRa, drones, and electronics projects."
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2933;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.85);
+      --shadow-light: 0 8px 18px rgba(15, 23, 42, 0.7);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 48%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 18px 40px;
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 24px 24px 60px;
+      }
+    }
+
+    /* Glassy Card Shell */
+    .shell {
+      border-radius: 28px;
+      padding: 1px;
+      background: radial-gradient(circle at top left, #38bdf8, #4c1d95 35%, #020617 80%);
+      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0, rgba(56, 189, 248, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 20%, rgba(129, 140, 248, 0.16), transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .shell-inner {
+      position: relative;
+      z-index: 1;
+      border-radius: 27px;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(26px);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      padding: 18px 18px 26px;
+    }
+
+    @media (min-width: 768px) {
+      .shell-inner {
+        padding: 24px 26px 32px;
+      }
+    }
+
+    /* Top Nav */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, #38bdf8, #0ea5e9 40%, #0f172a 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      box-shadow: var(--shadow-light);
+      color: #0b1120;
+    }
+
+    .nav-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-name {
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      font-size: 14px;
+    }
+
+    .nav-tag {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: none;
+      gap: 12px;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background var(--transition-fast), border-color var(--transition-fast),
+        color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(148, 163, 184, 0.6);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1.1fr;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.25), transparent 55%),
+        rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      color: var(--muted);
+      width: fit-content;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 4vw, 32px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background var(--transition-med), transform var(--transition-fast),
+        box-shadow var(--transition-med), border-color var(--transition-med);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, #38bdf8, #0ea5e9 45%, #1e40af 100%);
+      color: #0b1120;
+      font-weight: 600;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) translateX(0);
+      box-shadow: 0 22px 45px rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .btn-icon {
+      font-size: 14px;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .hero-card {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      border-radius: 24px;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 55%),
+        radial-gradient(circle at bottom, rgba(79, 70, 229, 0.25), transparent 60%),
+        #020617;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-soft);
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .chip {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .hero-card-main-label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .hero-card-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .metric {
+      padding: 6px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .metric-label {
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .metric-value {
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      margin-top: 8px;
+    }
+
+    .stack-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .stack-tag {
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    /* Sections */
+    .sections {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .sections {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section-card {
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), #020617);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 14px 14px 16px;
+      box-shadow: var(--shadow-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .section-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .section-body {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .section-body p + p {
+      margin-top: 8px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .skill-pill {
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      color: #d1d5db;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .skill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    /* Projects */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .project {
+      padding: 9px 9px;
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), #020617);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast), background var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .project:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-light);
+      border-color: rgba(56, 189, 248, 0.6);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), #020617);
+    }
+
+    .project-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .project-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .project-tag {
+      font-size: 10px;
+      color: var(--muted);
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      white-space: nowrap;
+    }
+
+    .project-desc {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .project-stack span {
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    /* Right Column – Contact */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .contact-item {
+      padding: 9px 9px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      transition: background var(--transition-fast), border-color var(--transition-fast),
+        transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .contact-item:hover {
+      background: rgba(15, 23, 42, 0.98);
+      border-color: rgba(56, 189, 248, 0.6);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-light);
+    }
+
+    .contact-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-label {
+      color: var(--muted);
+    }
+
+    .contact-value {
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .contact-cta {
+      font-size: 11px;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: 18px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+      border-top: 1px solid rgba(31, 41, 55, 1);
+      padding-top: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      opacity: 0.8;
+      transition: opacity var(--transition-fast), transform var(--transition-fast),
+        color var(--transition-fast);
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+      color: var(--accent);
+    }
+
+    /* 🔵 Hero big glowing circular glass profile frame */
+    .profile-hero-frame {
+      width: 150px;
+      height: 150px;
+      border-radius: 999px;
+      padding: 3px;
+      background: conic-gradient(
+        from 210deg,
+        rgba(56, 189, 248, 0.2),
+        rgba(129, 140, 248, 0.2),
+        rgba(56, 189, 248, 0.8),
+        rgba(129, 140, 248, 0.4),
+        rgba(15, 23, 42, 1),
+        rgba(56, 189, 248, 0.2)
+      );
+      box-shadow:
+        0 10px 35px rgba(15, 23, 42, 0.9),
+        0 0 30px rgba(56, 189, 248, 0.5);
+      margin-bottom: 14px;
+      position: relative;
+      overflow: visible;
+      transition: transform var(--transition-med), box-shadow var(--transition-med);
+    }
+
+    .profile-hero-frame::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: inherit;
+      background: radial-gradient(circle at 20% 0, rgba(56, 189, 248, 0.25), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .profile-hero-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      overflow: hidden;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-hero-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translateY(0);
+      transition: transform var(--transition-med);
+    }
+
+    .profile-hero-frame:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.95),
+        0 0 40px rgba(56, 189, 248, 0.7);
+    }
+
+    .profile-hero-frame:hover img {
+      transform: translateY(-2px);
+    }
+
+    /* Small about-section photo */
+    .about-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .about-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.2), transparent 60%);
+      flex-shrink: 0;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    /* Smooth scrolling anchor */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="shell">
+      <div class="shell-inner">
+        <!-- Nav -->
+        <header class="nav">
+          <div class="nav-left">
+            <div class="nav-logo">P</div>
+            <div class="nav-meta">
+              <div class="nav-name">Pranav</div>
+              <div class="nav-tag">Embedded · Electronics · IoT</div>
+            </div>
+          </div>
+          <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+          <div class="hero-left">
+            <div class="pill">
+              <span class="pill-dot"></span>
+              Open to opportunities · Embedded / Core
+            </div>
+            <h1 class="hero-title">
+              Embedded & Electronics Engineer<br />
+              building <span>real-world hardware systems</span>.
+            </h1>
+            <p class="hero-subtitle">
+              I work on embedded systems, IoT and electronics – from
+              <strong>LoRa sensor networks</strong> and
+              <strong>autonomous drones</strong> to <strong>home automation</strong> and
+              <strong>VLSI / Verilog designs</strong>. I enjoy taking projects from idea
+              to working hardware.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">
+                <span>View highlighted work</span>
+                <span class="btn-icon">↗</span>
+              </a>
+              <a href="#contact" class="btn btn-ghost">
+                <span>Get in touch</span>
+                <span class="btn-icon">✉</span>
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-right" aria-label="Tech snapshot">
+            <!-- Big glowing glass profile frame -->
+            <div class="profile-hero-frame">
+              <div class="profile-hero-inner">
+                <img src="profile.jpg" alt="Pranav portrait" />
+              </div>
+            </div>
+
+            <div class="hero-card">
+              <div class="hero-card-header">
+                <span class="chip">Tech snapshot</span>
+                <span>Chennai · India</span>
+              </div>
+              <div>
+                <div class="hero-card-main-label">Current focus</div>
+                <div class="hero-card-title">Embedded systems & IoT products</div>
+              </div>
+              <div class="hero-card-metrics">
+                <div class="metric">
+                  <div class="metric-label">LoRa / RF</div>
+                  <div class="metric-value">STM32, ESP32</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Autopilot</div>
+                  <div class="metric-value">APM, STM32</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">VLSI</div>
+                  <div class="metric-value">Verilog µC</div>
+                </div>
+              </div>
+              <div class="hero-card-footer">
+                <div class="stack-tags">
+                  <span class="stack-tag">C for MCU</span>
+                  <span class="stack-tag">Python</span>
+                  <span class="stack-tag">Embedded Linux</span>
+                </div>
+                <span style="font-size: 11px; color: var(--muted);">Hands-on with
+                  real hardware</span>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <!-- Main Sections -->
+        <div class="sections">
+          <!-- Left: About + Skills + Projects -->
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <!-- About -->
+            <section id="about" class="section-card">
+              <div class="section-card-inner">
+                <div class="section-header">
+                  <h2 class="section-title">About</h2>
+                  <span class="section-kicker">Who I am & what I do</span>
+                </div>
+                <div class="section-body">
+                  <div class="about-layout">
+                    <div class="about-photo">
+                      <img src="profile.jpg" alt="Pranav portrait small" />
+                    </div>
+                    <div class="about-text">
+                      <p>
+                        I'm Pranav, an engineer focused on embedded systems, electronics,
+                        and IoT. I enjoy building systems that combine
+                        <strong>microcontrollers, sensors, wireless communication, and real
+                          hardware</strong> to solve practical problems.
+                      </p>
+                      <p>
+                        My experience includes working with
+                        <strong>STM32, ESP32, Arduino, Raspberry Pi Zero</strong>, and
+                        <strong>APM/Pixhawk-class flight controllers</strong>. I've built
+                        projects ranging from a LoRa-based weather hub to autonomous
+                        rover/drone concepts and custom home automation.
+                      </p>
+                      <p>
+                        I'm looking for roles in
+                        <strong>embedded development, electronics, IoT, or VLSI
+                          (entry-level / junior)</strong>, where I can work on real products,
+                        learn from a strong team, and keep pushing my hardware and firmware
+                        skills.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Skills -->
+            <section id="skills" class="section-card">
+              <div class="section-card-inner">
+                <div class="section-header">
+                  <h2 class="section-title">Skills</h2>
+                  <span class="section-kicker">What I work with</span>
+                </div>
+                <div class="section-body">
+                  <div class="skills-grid">
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> C / Embedded C
+                    </span>
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> STM32 (F1 / F4)
+                    </span>
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> ESP32 / ESP8266
+                    </span>
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> Arduino (Nano / Uno / ESP-based)
+                    </span>
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> LoRa (RF communication)
+                    </span>
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> UART / I2C / SPI
+                    </span>
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> Sensors (DS18B20, BMP180, etc.)
+                    </span>
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> Raspberry Pi Zero
+                    </span>
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> ArduPilot / MAVLink (concepts)
+                    </span>
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> Verilog & basic VLSI
+                    </span>
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> Git & GitHub
+                    </span>
+                    <span class="skill-pill">
+                      <span class="skill-dot"></span> Basic PCB / hardware debugging
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Projects -->
+            <section id="projects" class="section-card">
+              <div class="section-card-inner">
+                <div class="section-header">
+                  <h2 class="section-title">Projects</h2>
+                  <span class="section-kicker">Selected work</span>
+                </div>
+                <div class="section-body">
+                  <div class="projects-list">
+                    <!-- Project 1 -->
+                    <article class="project">
+                      <div class="project-title-row">
+                        <h3 class="project-title">
+                          LoRa-based Multi-Sensor Weather & Soil Hub
+                        </h3>
+                        <span class="project-tag">STM32 · LoRa · ILI9341</span>
+                      </div>
+                      <p class="project-desc">
+                        Designed a hub–mobile unit system where mobile nodes read
+                        temperature, rain, soil moisture, and pressure sensors, then send
+                        the data over LoRa to a ground hub with an ILI9341 display.
+                        Planned to extend this into a small weather prediction system.
+                      </p>
+                      <div class="project-meta">
+                        <div class="project-stack">
+                          <span>STM32F103</span>
+                          <span>LoRa</span>
+                          <span>DS18B20, BMP180</span>
+                          <span>ILI9341 display</span>
+                        </div>
+                        <span>Embedded C · Drivers</span>
+                      </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project">
+                      <div class="project-title-row">
+                        <h3 class="project-title">
+                          Autonomous Drone Platform & Telemetry System
+                        </h3>
+                        <span class="project-tag">ArduPilot · Pi Zero · APM</span>
+                      </div>
+                      <p class="project-desc">
+                        Working on an autonomous drone platform with an APM-based flight
+                        controller and Raspberry Pi Zero 2 for 4G / Wi-Fi telemetry. The
+                        idea is to separate stabilization (flight controller) from mission
+                        logic, computer vision, and network communication.
+                      </p>
+                      <div class="project-meta">
+                        <div class="project-stack">
+                          <span>APM 2.8</span>
+                          <span>Raspberry Pi Zero 2</span>
+                          <span>ESP32</span>
+                          <span>MAVLink (concept)</span>
+                        </div>
+                        <span>Autopilot · Telemetry</span>
+                      </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project">
+                      <div class="project-title-row">
+                        <h3 class="project-title">Automated Fire Extinguisher System</h3>
+                        <span class="project-tag">Embedded · Safety</span>
+                      </div>
+                      <p class="project-desc">
+                        Created a prototype fire extinguisher system using a fire sensor
+                        and gas sensor to automatically detect fire and control a water
+                        pump. Designed as a low-cost automated safety solution.
+                      </p>
+                      <div class="project-meta">
+                        <div class="project-stack">
+                          <span>Microcontroller</span>
+                          <span>Fire & gas sensors</span>
+                          <span>Relay + pump</span>
+                        </div>
+                        <span>Prototyping</span>
+                      </div>
+                    </article>
+
+                    <!-- Project 4 -->
+                    <article class="project">
+                      <div class="project-title-row">
+                        <h3 class="project-title">
+                          Home Automation & Intruder Alert System
+                        </h3>
+                        <span class="project-tag">IoT · Automation</span>
+                      </div>
+                      <p class="project-desc">
+                        Built a home automation system with PIR-based automatic lights &
+                        fan control, plus intruder alerts using IoT connectivity. Focused
+                        on reliability and low-cost hardware that can be deployed in
+                        typical homes.
+                      </p>
+                      <div class="project-meta">
+                        <div class="project-stack">
+                          <span>ESP / Arduino</span>
+                          <span>PIR sensors</span>
+                          <span>IoT</span>
+                        </div>
+                        <span>End-to-end prototype</span>
+                      </div>
+                    </article>
+
+                    <!-- Project 5 -->
+                    <article class="project">
+                      <div class="project-title-row">
+                        <h3 class="project-title">
+                          8-bit Microcontroller in Verilog (VLSI Project)
+                        </h3>
+                        <span class="project-tag">Verilog · VLSI</span>
+                      </div>
+                      <p class="project-desc">
+                        Implemented an 8-bit microcontroller using Verilog with ALU,
+                        RAM, ROM, and encoder/decoder blocks as part of a VLSI project.
+                        Helped me understand CPU pipelines, datapaths, and basic digital
+                        design for hardware.
+                      </p>
+                      <div class="project-meta">
+                        <div class="project-stack">
+                          <span>Verilog</span>
+                          <span>ALU design</span>
+                          <span>Memory blocks</span>
+                        </div>
+                        <span>Digital design</span>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Right column: Contact & Extra -->
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <!-- Contact -->
+            <section id="contact" class="section-card">
+              <div class="section-card-inner">
+                <div class="section-header">
+                  <h2 class="section-title">Contact</h2>
+                  <span class="section-kicker">Let's work together</span>
+                </div>
+                <div class="section-body">
+                  <p>
+                    For roles, internships, or project collaborations in embedded,
+                    electronics, IoT, or VLSI, feel free to reach out. I'm comfortable
+                    learning new tools and working with existing codebases.
+                  </p>
+                  <div class="contact-list">
+                    <a
+                      class="contact-item"
+                      href="mailto:prabuga48@gmail.com?subject=Embedded%20Role%20%2F%20Collaboration"
+                    >
+                      <div class="contact-main">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">prabuga48@gmail.com</span>
+                      </div>
+                      <span class="contact-cta">
+                        Write me
+                        <span>↗</span>
+                      </span>
+                    </a>
+
+                    <a
+                      class="contact-item"
+                      href="https://github.com/Pranava202004"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <div class="contact-main">
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">github.com/Pranava202004</span>
+                      </div>
+                      <span class="contact-cta">
+                        View code
+                        <span>🐙</span>
+                      </span>
+                    </a>
+
+                    <a
+                      class="contact-item"
+                      href="https://www.linkedin.com/in/pranav-a-1259a91b9"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <div class="contact-main">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">linkedin.com/in/pranav-a-1259a91b9</span>
+                      </div>
+                      <span class="contact-cta">
+                        Connect
+                        <span>↗</span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Extras -->
+            <section class="section-card">
+              <div class="section-card-inner">
+                <div class="section-header">
+                  <h2 class="section-title">Highlights</h2>
+                  <span class="section-kicker">What I enjoy</span>
+                </div>
+                <div class="section-body">
+                  <p>
+                    I like taking on projects where I have to combine multiple areas:
+                    firmware, electronics design, communication protocols, and sometimes
+                    even a bit of backend or UI.
+                  </p>
+                  <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px;">
+                    <span class="badge">Hands-on debugging & testing</span>
+                    <span class="badge">Reading datasheets & app notes</span>
+                    <span class="badge">Learning new MCUs & toolchains</span>
+                    <span class="badge">Building real working prototypes</span>
+                  </div>
+                  <p style="margin-top: 10px;">
+                    I'm happy to start in an <strong>entry-level role</strong>, take
+                    responsibility, and grow into designing complete embedded systems over
+                    time.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Resume -->
+            <section class="section-card">
+              <div class="section-card-inner">
+                <div class="section-header">
+                  <h2 class="section-title">Resume</h2>
+                  <span class="section-kicker">Download</span>
+                </div>
+                <div class="section-body">
+                  <p>
+                    You can download my latest resume for more details on education,
+                    projects, and experience.
+                  </p>
+                  <div style="margin-top: 10px;">
+                    <a
+                      href="resume.pdf"
+                      class="btn btn-primary"
+                      style="width: 100%; justify-content: center;"
+                    >
+                      <span>Download Resume (PDF)</span>
+                      <span class="btn-icon">⬇</span>
+                    </a>
+                    <p style="margin-top: 6px; font-size: 11px; color: var(--muted);">
+                      Place a file named <code>resume.pdf</code> in the same folder as this
+                      website to enable the button.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <span>© <span id="year"></span> Pranav. All rights reserved.</span>
+          <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
